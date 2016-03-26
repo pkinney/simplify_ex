@@ -80,4 +80,17 @@ defmodule SimplifyTest do
 
     assert simplified == "{\"type\":\"LineString\",\"coordinates\":[[0,0],[0.05,1.1],[1,1],[0,0.0001]]}"
   end
+
+  test "large ring simplification" do
+    ring =
+      Path.join([ "test", "fixtures", "large_linestring.wkt" ])
+      |> File.read!
+      |> Geo.WKT.decode
+
+    simplified = Simplify.simplify(ring, 100)
+    simplifiedAgain = Simplify.simplify(simplified, 100)
+
+    assert length(simplified.coordinates) < length(ring.coordinates)
+    assert length(simplified.coordinates) == length(simplifiedAgain.coordinates)
+  end
 end
