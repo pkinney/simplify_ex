@@ -1,6 +1,7 @@
 # Simplify
 
 [![Build Status](https://travis-ci.org/pkinney/simplify_ex.svg?branch=master)](https://travis-ci.org/pkinney/simplify_ex)
+[![Hex.pm](https://img.shields.io/hexpm/v/plug.svg)](https://hex.pm/packages/simplify)
 
 Implementation of the [Ramer–Douglas–Peucker](https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm)
 algorithm for reducing the number of points used to represent a curve.
