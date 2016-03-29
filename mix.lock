@@ -1,5 +1,7 @@
 %{"certifi": {:hex, :certifi, "0.4.0"},
   "distance": {:hex, :distance, "0.1.2"},
+  "earmark": {:hex, :earmark, "0.2.1"},
+  "ex_doc": {:hex, :ex_doc, "0.11.4"},
   "excoveralls": {:hex, :excoveralls, "0.5.1"},
   "exjsx": {:hex, :exjsx, "3.2.0"},
   "geo": {:hex, :geo, "1.0.1"},

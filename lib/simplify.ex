@@ -15,7 +15,7 @@ defmodule Simplify do
     {farIndex, _, farSquaredDist} =
       Enum.zip(0..(length(segment)-1), segment)
       |> Enum.slice(1..(length(segment) - 2))
-      |> Enum.map(fn({i, p}) -> { i, p, Distance.segment_distance_squared(p, first, last)} end)
+      |> Enum.map(fn({i, p}) -> { i, p, seg_dist(p, first, last)} end)
       |> Enum.max_by(&(elem(&1, 2)))
 
     if farSquaredDist > toleranceSquared do
@@ -27,4 +27,7 @@ defmodule Simplify do
       [ first, last ]
     end
   end
+
+  defp seg_dist({px, py, _}, {ax, ay, _}, {bx, by, _}), do: seg_dist({px, py}, {ax, ay}, {bx, by})
+  defp seg_dist(p, a, b), do: Distance.segment_distance_squared(p, a, b)
 end

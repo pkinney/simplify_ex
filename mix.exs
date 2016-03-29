@@ -3,7 +3,7 @@ defmodule Simplify.Mixfile do
 
   def project do
     [app: :simplify,
-     version: "0.1.0",
+     version: "0.2.0",
      elixir: "~> 1.2",
      description: description,
      package: package,
@@ -22,6 +22,8 @@ defmodule Simplify.Mixfile do
       {:poison, "~> 2.0"},
       {:geo, "~> 1.0"},
       {:distance, "~> 0.1.0"},
+      {:earmark, "~> 0.1", only: :dev},
+      {:ex_doc, "~> 0.11", only: :dev},
       {:excoveralls, "~> 0.4", only: :test}
     ]
   end

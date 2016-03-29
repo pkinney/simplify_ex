@@ -53,6 +53,20 @@ defmodule SimplifyTest do
     assert Simplify.simplify(points, 0.009) == [ {0, 0}, {0.5, 0.01}, {1, 0}, {2, 1} ]
   end
 
+  test "simplify with additional properties" do
+    points = [
+      {0, 0, "A"},
+      {0.01, 0, "B"},
+      {0.5, 0.01, "C"},
+      {0.7, 0, "D"},
+      {1, 0, "E"},
+      {1.999, 0.999, "F"},
+      {2,1, "G"}
+    ]
+
+    assert Enum.map(Simplify.simplify(points, 0.009), &(elem(&1, 2))) == ["A", "C", "E", "G"]
+  end
+
   test "simplify lots of tuples" do
     shape =
       Path.join([ "test", "fixtures", "linestring.geo.json" ])
