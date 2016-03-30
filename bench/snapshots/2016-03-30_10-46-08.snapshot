@@ -1,0 +1,10 @@
+duration:1.0;mem stats:false;sys mem stats:false
+module;test;tags;iterations;elapsed
+SimplifyBench	short linestring - normal tolerance		50000	1971948
+SimplifyBench	short linestring - low tolerance		100000	2488690
+SimplifyBench	short linestring - high tolerance		100000	2376043
+SimplifyBench	long linestring - very very high tolerance		10	1228895
+SimplifyBench	long linestring - very low tolerance		10	2006097
+SimplifyBench	long linestring - very high tolerance		10	1758812
+SimplifyBench	long linestring - normal tolerance		10	1986578
+SimplifyBench	long linestring - high tolerance		10	1986845
