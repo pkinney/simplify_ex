@@ -1,0 +1,7 @@
+duration:1.0;mem stats:false;sys mem stats:false
+module;test;tags;iterations;elapsed
+SimplifyBench	very very high tolerance		10	1149906
+SimplifyBench	very low tolerance		10	1907634
+SimplifyBench	very high tolerance		10	1708830
+SimplifyBench	normal tolerance		10	1892089
+SimplifyBench	high tolerance		10	1889796

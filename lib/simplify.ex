@@ -14,17 +14,18 @@ defmodule Simplify do
 
     {farIndex, _, farSquaredDist} =
       Enum.zip(0..(length(segment)-1), segment)
-      |> Enum.slice(1..(length(segment) - 2))
+      |> Enum.drop(1)
+      |> Enum.drop(-1)
       |> Enum.map(fn({i, p}) -> { i, p, seg_dist(p, first, last)} end)
       |> Enum.max_by(&(elem(&1, 2)))
 
     if farSquaredDist > toleranceSquared do
-      front = simplifyDPStep(Enum.slice(segment, 0..farIndex), toleranceSquared)
-      [ _ | back ] = simplifyDPStep(Enum.slice(segment, farIndex..length(segment)), toleranceSquared)
+      front = simplifyDPStep(Enum.take(segment, farIndex + 1), toleranceSquared)
+      [_ | back] = simplifyDPStep(Enum.drop(segment, farIndex), toleranceSquared)
 
       front ++ back
     else
-      [ first, last ]
+      [first, last]
     end
   end
 
