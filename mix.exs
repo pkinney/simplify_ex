@@ -5,7 +5,7 @@ defmodule Simplify.Mixfile do
     [
       app: :simplify,
       version: "0.2.1",
-      elixir: "~> 1.8",
+      elixir: "~> 1.6",
       description: description(),
       package: package(),
       start_permanent: Mix.env() == :prod,
