@@ -9,6 +9,7 @@ defmodule Simplify.Mixfile do
       description: description(),
       package: package(),
       start_permanent: Mix.env() == :prod,
+      dialyzer: [plt_add_apps: [:mix]],
       test_coverage: [tool: ExCoveralls],
       deps: deps()
     ]
@@ -22,12 +23,13 @@ defmodule Simplify.Mixfile do
 
   defp deps do
     [
-      {:jason, "~> 1.1"},
       {:geo, "~> 3.1"},
       {:distance, "~> 0.2.1"},
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:benchfella, "~> 0.3.0", only: :dev},
-      {:excoveralls, "~> 0.4", only: :test}
+      {:jason, "~> 1.1", only: :test},
+      {:excoveralls, "~> 0.4", only: :test},
+      {:dialyxir, "~> 0.5", only: [:dev], runtime: false}
     ]
   end
 

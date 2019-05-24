@@ -1,28 +1,32 @@
 defmodule Simplify do
+  @type point :: {number, number}
+
+  @spec simplify(list(point), number) :: list(point)
   def simplify(coordinates, tolerance) when is_list(coordinates) do
-    simplifyDPStep(coordinates, tolerance * tolerance)
+    simplify_dp_step(coordinates, tolerance * tolerance)
   end
 
+  @spec simplify(%Geo.LineString{}, number) :: %Geo.LineString{}
   def simplify(%Geo.LineString{} = linestring, tolerance) do
     %Geo.LineString{coordinates: simplify(linestring.coordinates, tolerance)}
   end
 
-  defp simplifyDPStep(segment, _) when length(segment) < 3, do: segment
+  defp simplify_dp_step(segment, _) when length(segment) < 3, do: segment
 
-  defp simplifyDPStep(segment, toleranceSquared) do
+  defp simplify_dp_step(segment, tolerance_squared) do
     first = List.first(segment)
     last = List.last(segment)
 
-    {farIndex, _, farSquaredDist} =
+    {far_index, _, far_squared_dist} =
       Enum.zip(0..(length(segment) - 1), segment)
       |> Enum.drop(1)
       |> Enum.drop(-1)
       |> Enum.map(fn {i, p} -> {i, p, seg_dist(p, first, last)} end)
       |> Enum.max_by(&elem(&1, 2))
 
-    if farSquaredDist > toleranceSquared do
-      front = simplifyDPStep(Enum.take(segment, farIndex + 1), toleranceSquared)
-      [_ | back] = simplifyDPStep(Enum.drop(segment, farIndex), toleranceSquared)
+    if far_squared_dist > tolerance_squared do
+      front = simplify_dp_step(Enum.take(segment, far_index + 1), tolerance_squared)
+      [_ | back] = simplify_dp_step(Enum.drop(segment, far_index), tolerance_squared)
 
       front ++ back
     else

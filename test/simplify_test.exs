@@ -113,9 +113,9 @@ defmodule SimplifyTest do
       |> Geo.WKT.decode!()
 
     simplified = Simplify.simplify(ring, 100)
-    simplifiedAgain = Simplify.simplify(simplified, 100)
+    simplified_again = Simplify.simplify(simplified, 100)
 
     assert length(simplified.coordinates) < length(ring.coordinates)
-    assert length(simplified.coordinates) == length(simplifiedAgain.coordinates)
+    assert length(simplified.coordinates) == length(simplified_again.coordinates)
   end
 end
