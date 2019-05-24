@@ -1,0 +1,1 @@
+searchNodes=[{"ref":"Simplify.html","title":"Simplify","type":"module","doc":""},{"ref":"Simplify.html#simplify/2","title":"Simplify.simplify/2","type":"function","doc":""},{"ref":"Simplify.html#t:point/0","title":"Simplify.point/0","type":"type","doc":""}]

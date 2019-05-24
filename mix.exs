@@ -4,7 +4,7 @@ defmodule Simplify.Mixfile do
   def project do
     [
       app: :simplify,
-      version: "0.2.1",
+      version: "1.0.0",
       elixir: "~> 1.6",
       description: description(),
       package: package(),
