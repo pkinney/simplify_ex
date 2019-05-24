@@ -36,9 +36,9 @@ returns a `Geo.LineString` of the simplified curve.
 
 ```elixir
 "{\"type\":\"LineString\":\"coordinates\":[[0,0],[0.05,0.05],[-0.05,0.5],[0,1],[0.05,1.1],[1,1],[0.5,0.5],[0,0.0001]]"
-|> Poison.decode!
+|> Jason.decode!
 |> Geo.JSON.decode
 |> Simplify.simplify(0.1)
 |> Geo.JSON.encode
-|> Poison.encode! # => "{\"type\":\"LineString\",\"coordinates\":[[0,0],[0.05,1.1],[1,1],[0,0.0001]]}"
+|> Jason.encode! # => "{\"coordinates\":[[0,0],[0.05,1.1],[1,1],[0,0.0001]],\"type\":\"LineString\"}"
 ```

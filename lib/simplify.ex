@@ -8,16 +8,17 @@ defmodule Simplify do
   end
 
   defp simplifyDPStep(segment, _) when length(segment) < 3, do: segment
+
   defp simplifyDPStep(segment, toleranceSquared) do
     first = List.first(segment)
     last = List.last(segment)
 
     {farIndex, _, farSquaredDist} =
-      Enum.zip(0..(length(segment)-1), segment)
+      Enum.zip(0..(length(segment) - 1), segment)
       |> Enum.drop(1)
       |> Enum.drop(-1)
-      |> Enum.map(fn({i, p}) -> { i, p, seg_dist(p, first, last)} end)
-      |> Enum.max_by(&(elem(&1, 2)))
+      |> Enum.map(fn {i, p} -> {i, p, seg_dist(p, first, last)} end)
+      |> Enum.max_by(&elem(&1, 2))
 
     if farSquaredDist > toleranceSquared do
       front = simplifyDPStep(Enum.take(segment, farIndex + 1), toleranceSquared)
