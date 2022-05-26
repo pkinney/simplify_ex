@@ -118,4 +118,26 @@ defmodule SimplifyTest do
     assert length(simplified.coordinates) < length(ring.coordinates)
     assert length(simplified.coordinates) == length(simplified_again.coordinates)
   end
+
+  @tag bench: true
+  test "benchmark large ring simplification" do
+    ring =
+      Path.join(["test", "fixtures", "large_linestring.wkt"])
+      |> File.read!()
+      |> Geo.WKT.decode!()
+
+    runs = 10
+
+    {usec, _} =
+      :timer.tc(fn ->
+        for _ <- 1..runs do
+          _ = Simplify.simplify(ring, 1)
+          _ = Simplify.simplify(ring, 10)
+          _ = Simplify.simplify(ring, 100)
+        end
+      end)
+
+    avg_runtime_sec = Float.round(usec / 1_000_000 / runs, 4)
+    IO.puts("Avg runtime: #{avg_runtime_sec} seconds per run")
+  end
 end
