@@ -5,18 +5,24 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.20.2">
-    <meta name="project" content="simplify v1.0.0">
-    <title>Simplify — simplify v1.0.0</title>
+    <meta name="project" content="simplify v2.0.0">
+    <title>Simplify — simplify v2.0.0</title>
     <link rel="stylesheet" href="dist/html-d9f58a6320b5bfa6dd77.css" />
-      <link rel="canonical" href="https://hexdocs.pm/simplify/Simplify.html" />
+
     <script src="dist/sidebar_items-5650df0fb9.js"></script>
+
       <script src="docs_config.js"></script>
+
     <script async src="dist/html-d9f58a6320b5bfa6dd77.js"></script>
-    
+
+
+
+
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
-    <div class="main">
+
+<div class="main">
 
 <button class="sidebar-button sidebar-toggle">
   <span class="icon-menu" title="Collapse/expand sidebar"></span>
@@ -43,17 +49,20 @@
   <div class="sidebar-header">
     <div class="sidebar-projectDetails">
       <a href="api-reference.html" class="sidebar-projectName">
-simplify      </a>
+simplify
+      </a>
       <h2 class="sidebar-projectVersion">
-        v1.0.0
+        v2.0.0
       </h2>
     </div>
+
   </div>
 
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
       <li><a id="modules-list" href="#full-list">Modules</a></li>
+
 
 
   </ul>
@@ -65,11 +74,35 @@ simplify      </a>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-
       <h1>
-        <small class="app-vsn">simplify v1.0.0</small>
-Simplify              </h1>
+        <small class="app-vsn">simplify v2.0.0</small>
+Simplify
 
+      </h1>
+
+
+        <section id="moduledoc">
+<p>Implementation of the <a href="https://en.wikipedia.org/wiki/Ramer%25E2%2580%2593Douglas%25E2%2580%2593Peucker_algorithm">Ramer–Douglas–Peucker</a>
+algorithm for reducing the number of points used to represent a curve.</p>
+<p>The <a href="#content"><code class="inline">Simplify</code></a> module contains a function <code class="inline">simplify</code> that accepts a List of
+coordinates, each coordinate being a tuple <code class="inline">{x, y}</code>, and a tolerance.  The
+function reduces the number of points by removing points that are less than
+the tolerance away from the simplified curve.</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">points</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0932007266-1">[</span><span class="p" data-group-id="0932007266-2">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="0932007266-2">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0932007266-3">{</span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05</span><span class="p" data-group-id="0932007266-3">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0932007266-4">{</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p" data-group-id="0932007266-4">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0932007266-5">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="0932007266-5">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0932007266-6">{</span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">1.1</span><span class="p" data-group-id="0932007266-6">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0932007266-7">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="0932007266-7">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0932007266-8">{</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p" data-group-id="0932007266-8">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0932007266-9">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0001</span><span class="p" data-group-id="0932007266-9">}</span><span class="p" data-group-id="0932007266-1">]</span><span class="w">
+
+</span><span class="nc">Simplify</span><span class="o">.</span><span class="n">simplify</span><span class="p" data-group-id="0932007266-10">(</span><span class="n">points</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p" data-group-id="0932007266-10">)</span><span class="w"> </span><span class="c1"># =&gt; [{0, 0}, {0.05, 1.1}, {1, 1}, {0, 0.0001}]</span></code></pre>
+<p>The method will also take a <a href="https://hexdocs.pm/geo/3.1.0/Geo.LineString.html"><code class="inline">Geo.LineString</code></a> struct as created by the conversion
+functions in the Geo project (https://github.com/bryanjos/geo).  This allows
+for easy import of GeoJSON or WKT/WKB formats.  This version of the function
+returns a <a href="https://hexdocs.pm/geo/3.1.0/Geo.LineString.html"><code class="inline">Geo.LineString</code></a> of the simplified curve.</p>
+<pre><code class="nohighlight makeup elixir"><span class="s">&quot;{&quot;</span><span class="n">type</span><span class="s">&quot;:&quot;</span><span class="nc">LineString</span><span class="s">&quot;:&quot;</span><span class="n">coordinates</span><span class="s">&quot;:[[0,0],[0.05,0.05],[-0.05,0.5],[0,1],[0.05,1.1],[1,1],[0.5,0.5],[0,0.0001]]&quot;</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Jason</span><span class="o">.</span><span class="n">decode!</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Geo.JSON</span><span class="o">.</span><span class="n">decode</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Simplify</span><span class="o">.</span><span class="n">simplify</span><span class="p" data-group-id="2857732213-1">(</span><span class="mf">0.1</span><span class="p" data-group-id="2857732213-1">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Geo.JSON</span><span class="o">.</span><span class="n">encode</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Jason</span><span class="o">.</span><span class="n">encode!</span><span class="w"> </span><span class="c1"># =&gt; &quot;{&quot;coordinates&quot;:[[0,0],[0.05,1.1],[1,1],[0,0.0001]],&quot;type&quot;:&quot;LineString&quot;}&quot;</span></code></pre>
+
+        </section>
 
 
         <section id="summary" class="details-list">
@@ -80,6 +113,7 @@ Simplify              </h1>
             </a>
             Summary
           </h1>
+
   <div class="summary-types summary">
     <h2>
       <a href="#types">Types</a>
@@ -87,9 +121,13 @@ Simplify              </h1>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#t:point/0">point()</a>
+
   </div>
+
 </div>
+
   </div>
+
   <div class="summary-functions summary">
     <h2>
       <a href="#functions">Functions</a>
@@ -97,10 +135,15 @@ Simplify              </h1>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#simplify/2">simplify(coordinates, tolerance)</a>
+
   </div>
+
 </div>
+
   </div>
+
         </section>
+
 
         <section id="types" class="details-list">
           <h1 class="section-heading">
@@ -108,55 +151,77 @@ Simplify              </h1>
               <span class="icon-link" aria-hidden="true"></span>
               <span class="sr-only">Link to this section</span>
             </a>
-Types          </h1>
+Types
+          </h1>
           <div class="types-list">
 <section class="detail" id="t:point/0">
-    <div class="detail-header">
+
+
+  <div class="detail-header">
     <a href="#t:point/0" class="detail-link" title="Link to this type">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this type</span>
     </a>
     <h1 class="signature">point()</span>
-        
+
+
+
       <div class="specs">
+
           <pre>point() :: {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()}</pre>
+
       </div>
+
   </div>
+
   <section class="docstring">
+
   </section>
 </section>
+
           </div>
         </section>
+
         <section id="functions" class="details-list">
           <h1 class="section-heading">
             <a class="hover-link" href="#functions">
               <span class="icon-link" aria-hidden="true"></span>
               <span class="sr-only">Link to this section</span>
             </a>
-Functions          </h1>
+Functions
+          </h1>
           <div class="functions-list">
 <section class="detail" id="simplify/2">
-    <div class="detail-header">
+
+
+  <div class="detail-header">
     <a href="#simplify/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">simplify(coordinates, tolerance)</span>
-        
+
+
+
       <div class="specs">
+
           <pre>simplify([<a href="#t:point/0">point</a>()], <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()) :: [<a href="#t:point/0">point</a>()]</pre>
-          <pre>simplify(
-  %Geo.LineString{coordinates: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), properties: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), srid: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()},
-  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()
-) :: %Geo.LineString{coordinates: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), properties: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), srid: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+          <pre>simplify(<a href="https://hexdocs.pm/geo/3.1.0/Geo.LineString.html#t:t/0">Geo.LineString.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()) :: <a href="https://hexdocs.pm/geo/3.1.0/Geo.LineString.html#t:t/0">Geo.LineString.t</a>()</pre>
+
       </div>
+
   </div>
+
   <section class="docstring">
+
   </section>
 </section>
+
           </div>
         </section>
-          <footer class="footer">
+
+      <footer class="footer">
         <p>
           <span class="line">
             Built using
@@ -180,7 +245,9 @@ Functions          </h1>
   </div>
 </section>
 </div>
-  
+
+
+
+
   </body>
 </html>
-
