@@ -28,26 +28,24 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - otp: 25.0
-            elixir: 1.13.4
-          - otp: 25.0
-            elixir: 1.12.2
-          - otp: 24.0
-            elixir: 1.13.4
-          - otp: 24.0
-            elixir: 1.12.2
-          - otp: 23.3
-            elixir: 1.12.2
-          - otp: 23.3
-            elixir: 1.11.4
-          - otp: 22.3
-            elixir: 1.10.4
-          - otp: 22.3
-            elixir: 1.9.4
-          - otp: 22.3
-            elixir: 1.8.2
-          - otp: 22.3
-            elixir: 1.7.4
+          - elixir: 1.13.x
+            otp: 25
+          - elixir: 1.13.x
+            otp: 24
+          - elixir: 1.12.x
+            otp: 23
+          - elixir: 1.11.x
+            otp: 23
+          - elixir: 1.11.x
+            otp: 22
+          - elixir: 1.10.x
+            otp: 21
+          - elixir: 1.9.x
+            otp: 20
+          - elixir: 1.8.x
+            otp: 20
+          - elixir: 1.7.x
+
     env:
       MIX_ENV: test
 
