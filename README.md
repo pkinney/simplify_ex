@@ -12,7 +12,7 @@ algorithm for reducing the number of points used to represent a curve.
 
 ```elixir
 defp deps do
-  [{:simplify, "~> 1.0"}]
+  [{:simplify, "~> 2.0"}]
 end
 ```
 
