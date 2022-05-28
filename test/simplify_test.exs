@@ -95,7 +95,7 @@ defmodule SimplifyTest do
 
   test "Geo.LineString simplification" do
     simplified =
-      "{\"type\":\"LineString\",\"coordinates\":[[0,0],[0.05,0.05],[-0.05,0.5],[0,1],[0.05,1.1],[1,1],[0.5,0.5],[0,0.0001]]}"
+      "{\"type\":\"LineString\",\"coordinates\":[[0,0],[0.05,0.05],[-0.05,0.5],[0,1],[0.05,1.1],[1,1],[0.5,0.5],[0,0.001]]}"
       |> Jason.decode!()
       |> Geo.JSON.decode!()
       |> Simplify.simplify(0.1)
@@ -103,7 +103,7 @@ defmodule SimplifyTest do
       |> Jason.encode!()
 
     assert simplified ==
-             "{\"coordinates\":[[0,0],[0.05,1.1],[1,1],[0,0.0001]],\"type\":\"LineString\"}"
+             "{\"coordinates\":[[0,0],[0.05,1.1],[1,1],[0,0.001]],\"type\":\"LineString\"}"
   end
 
   test "large ring simplification" do
