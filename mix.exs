@@ -11,7 +11,8 @@ defmodule Simplify.Mixfile do
       start_permanent: Mix.env() == :prod,
       dialyzer: [plt_add_apps: [:mix]],
       test_coverage: [tool: ExCoveralls],
-      deps: deps()
+      deps: deps(),
+      aliases: aliases()
     ]
   end
 
@@ -29,7 +30,8 @@ defmodule Simplify.Mixfile do
       {:benchfella, "~> 0.3.0", only: :dev},
       {:jason, "~> 1.1", only: :test},
       {:excoveralls, "~> 0.4", only: :test},
-      {:dialyxir, "~> 0.5", only: [:dev], runtime: false}
+      {:credo, "~> 1.6", only: :dev, runtime: false},
+      {:dialyxir, "~> 1.0", only: :dev, runtime: false}
     ]
   end
 
@@ -45,6 +47,18 @@ defmodule Simplify.Mixfile do
       maintainers: ["Powell Kinney"],
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/pkinney/simplify_ex"}
+    ]
+  end
+
+  defp aliases do
+    [
+      validate: [
+        "clean",
+        "compile --warnings-as-error",
+        "format --check-formatted",
+        "credo",
+        "dialyzer"
+      ]
     ]
   end
 end
