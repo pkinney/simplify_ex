@@ -100,6 +100,7 @@ defmodule SimplifyTest do
       |> Geo.JSON.decode!()
       |> Simplify.simplify(0.1)
       |> Geo.JSON.encode!()
+      |> Map.delete("crs")
       |> Jason.encode!()
 
     assert simplified ==
