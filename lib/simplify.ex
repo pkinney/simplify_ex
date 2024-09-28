@@ -37,7 +37,10 @@ defmodule Simplify do
 
   @spec simplify(Geo.LineString.t(), number) :: Geo.LineString.t()
   def simplify(%Geo.LineString{} = linestring, tolerance) do
-    %Geo.LineString{coordinates: simplify(linestring.coordinates, tolerance)}
+    %Geo.LineString{
+      coordinates: simplify(linestring.coordinates, tolerance),
+      srid: linestring.srid
+    }
   end
 
   defp simplify_dp_step([], _), do: []

@@ -24,7 +24,7 @@ defmodule Simplify.Mixfile do
 
   defp deps do
     [
-      {:geo, "~> 3.1"},
+      {:geo, "~> 3.1 or ~> 4.0"},
       {:distance, "~> 1.0"},
       {:benchfella, "~> 0.3.0", only: :dev},
       {:jason, "~> 1.1", only: [:dev, :test]},
